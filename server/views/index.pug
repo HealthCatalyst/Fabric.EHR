@@ -8,4 +8,15 @@ block content
     for book in insights
       li= book.InsightsText.value
     else
-      li sorry, no books!    
+      li No Insights for this patient    
+
+  div
+    table
+      thead
+        tr: th Controlled Substances
+      tbody
+        each controlledSubstance, i in controlledSubstances
+          tr
+            td= controlledSubstance.MedicationName.value
+            td= moment(controlledSubstance.DatePrescribed.value).format("YYYY/MM/DD")             
+            td= controlledSubstance.PrescribedByDoctor.value            

@@ -35,6 +35,12 @@ module.exports = {
     },
     loadPatientInsights: function(patientId, callback) {
         this.executeQuery('SELECT * FROM Insights WHERE PatientID=' + patientId, callback);
+    },
+    loadControlledSubstances: function(patientId, callback) {
+        this.executeQuery('SELECT * FROM ControlledSubstances WHERE PatientID=' + patientId, callback);
+    },
+    loadRegistries: function(patientId, callback) {
+        this.executeQuery('SELECT * FROM Registries WHERE PatientID=' + patientId, callback);
     }
 };
 
