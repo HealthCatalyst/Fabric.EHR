@@ -8,7 +8,9 @@ var config = {
     password: 'ILoveNode2017', // update me
     server: 'localhost',
     options: {
-        database: 'InsightsDatabase'
+        database: 'InsightsDatabase',
+        rowCollectionOnRequestCompletion: true,
+        useColumnNames: true
     }
 };
 
@@ -39,26 +41,27 @@ module.exports = {
 // "select 123, 'hello world'"
 
 var executeStatement = function(connection, query, callback) {
-    request = new Request(query, function(err, rowCount) {
+    request = new Request(query, function(err, rowCount, rows) {
         if (err) {
             console.log(err);
         } else {
             console.log(rowCount + ' rows');
+            console.log(rows);
         }
         connection.close();
 
-        callback();
+        callback(err, rows);
     });
 
-    request.on('row', function(columns) {
-        columns.forEach(function(column) {
-            if (column.value === null) {
-                console.log('NULL');
-            } else {
-                console.log(column.value);
-            }
-        });
-    });
+    /*    request.on('row', function(columns) {
+            columns.forEach(function(column) {
+                if (column.value === null) {
+                    console.log('NULL');
+                } else {
+                    console.log(column.value);
+                }
+            });
+        });*/
 
     connection.execSql(request);
 };
