@@ -2,13 +2,19 @@ extends layout
 
 block content
   h4= title
-  p Insights for #{patientName}
+  p PatientId: #{patientName}
 
-  ul
-    for book in insights
-      li= book.InsightsText.value
-    else
-      li No Insights for this patient    
+  div
+    table
+      thead
+        tr: th Insights
+      tbody
+        each insight, i in insights
+          tr
+            td= insight.InsightsText.value
+            td= moment(insight.DateCreated.value).format("YYYY/MM/DD")             
+
+  br
 
   div
     table
@@ -20,3 +26,16 @@ block content
             td= controlledSubstance.MedicationName.value
             td= moment(controlledSubstance.DatePrescribed.value).format("YYYY/MM/DD")             
             td= controlledSubstance.PrescribedByDoctor.value            
+
+  br
+  
+  div
+    table
+      thead
+        tr: th Registries
+      tbody
+        each registry, i in registries
+          tr
+            td= registry.RegistryName.value
+            td= moment(registry.DateAdded.value).format("YYYY/MM/DD")             
+        

@@ -5,7 +5,7 @@ var sqlclient = require('../sqlclient');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/:patientId', function(req, res, next) {
+router.get('/fabricpane/:patientId', function(req, res, next) {
     var patientId = req.params.patientId;
     var insightRows = [];
     var controlledSubstances = [];
@@ -14,14 +14,16 @@ router.get('/:patientId', function(req, res, next) {
     sqlclient.loadPatientInsights(patientId, function(err, rows) {
 
         if (err) {
-            res.sendStatus(500).json(err);
+            console.log(err);
+            res.status(500).send(err);
             return;
         }
         insightRows = rows;
 
         sqlclient.loadControlledSubstances(patientId, function(err, rows) {
             if (err) {
-                res.sendStatus(500).json(err);
+                console.log(err);
+                res.status(500).send(err);
                 return;
             }
 
@@ -29,7 +31,9 @@ router.get('/:patientId', function(req, res, next) {
 
             sqlclient.loadRegistries(patientId, function(err, rows) {
                 if (err) {
-                    res.sendStatus(500).json(err);
+                    console.log(err);
+                    res.status(500).send(err);
+                    return;
                 } else {
                     registries = rows;
                     res.render('index', {
