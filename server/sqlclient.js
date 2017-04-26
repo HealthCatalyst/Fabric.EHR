@@ -17,24 +17,28 @@ module.exports = {
         // whatever
         console.log("Hello");
     },
-    executeQuery: function( /*string*/ query) {
+    executeQuery: function( /*string*/ query, callback) {
         // whatever
-        console.log("bar");
+        console.log("executeQuery");
         var connection = new Connection(config);
 
         connection.on('connect', function(err) {
             if (err) {
                 console.log(err);
+                callback();
             } else {
-                executeStatement(connection, "select 123, 'hello world'");
+                executeStatement(connection, query, callback);
             }
         });
+    },
+    loadPatientInsights: function(patientId, callback) {
+        this.executeQuery('SELECT * FROM Insights', callback);
     }
 };
 
 // "select 123, 'hello world'"
 
-var executeStatement = function(connection, query) {
+var executeStatement = function(connection, query, callback) {
     request = new Request(query, function(err, rowCount) {
         if (err) {
             console.log(err);
@@ -42,6 +46,8 @@ var executeStatement = function(connection, query) {
             console.log(rowCount + ' rows');
         }
         connection.close();
+
+        callback();
     });
 
     request.on('row', function(columns) {
