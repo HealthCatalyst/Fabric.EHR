@@ -34,7 +34,7 @@ module.exports = {
         });
     },
     loadPatientInsights: function(patientId, callback) {
-        this.executeQuery('SELECT * FROM Insights', callback);
+        this.executeQuery('SELECT * FROM Insights WHERE PatientID=' + patientId, callback);
     }
 };
 
