@@ -12,7 +12,7 @@ block content
         each insight, i in insights
           tr
             td= insight.InsightsText.value
-            td= moment(insight.DateCreated.value).format("YYYY/MM/DD")             
+            td= moment(insight.DateCreated.value).format("MMM Do YYYY")             
 
   br
 
@@ -24,11 +24,11 @@ block content
         each controlledSubstance, i in controlledSubstances
           tr
             td= controlledSubstance.MedicationName.value
-            td= moment(controlledSubstance.DatePrescribed.value).format("YYYY/MM/DD")             
+            td= moment(controlledSubstance.DatePrescribed.value).format("MMM Do YYYY")             
             td= controlledSubstance.PrescribedByDoctor.value            
 
   br
-  
+
   div
     table
       thead
@@ -37,5 +37,5 @@ block content
         each registry, i in registries
           tr
             td= registry.RegistryName.value
-            td= moment(registry.DateAdded.value).format("YYYY/MM/DD")             
+            td= moment(registry.DateAdded.value).format("MMM Do YYYY")             
         
