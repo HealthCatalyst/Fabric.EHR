@@ -6,7 +6,10 @@ var Request = require('tedious').Request;
 var config = {
     userName: 'nodeuser', // update me
     password: 'ILoveNode2017', // update me
-    server: 'localhost'
+    server: 'localhost',
+    options: {
+        database: 'InsightsDatabase'
+    }
 };
 
 module.exports = {
@@ -23,14 +26,16 @@ module.exports = {
             if (err) {
                 console.log(err);
             } else {
-                executeStatement(connection);
+                executeStatement(connection, "select 123, 'hello world'");
             }
         });
     }
 };
 
-var executeStatement = function(connection) {
-    request = new Request("select 123, 'hello world'", function(err, rowCount) {
+// "select 123, 'hello world'"
+
+var executeStatement = function(connection, query) {
+    request = new Request(query, function(err, rowCount) {
         if (err) {
             console.log(err);
         } else {
