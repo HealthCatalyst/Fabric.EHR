@@ -8,7 +8,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Fabric Pane', patientName: 'Jim Jones', insights: ['High risk for readmission', 'Due for mammogram'] });
 
-    sqlclient.bar();
+    sqlclient.executeQuery();
 });
 
 module.exports = router;
