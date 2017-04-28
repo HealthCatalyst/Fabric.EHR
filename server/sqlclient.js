@@ -6,7 +6,7 @@ var Request = require('tedious').Request;
 var config = {
     userName: 'nodeuser', // update me
     password: 'ILoveNode2017', // update me
-    server: 'localhost',
+    server: process.env.SQLServer || 'localhost',
     options: {
         database: 'InsightsDatabase',
         rowCollectionOnRequestCompletion: true,
