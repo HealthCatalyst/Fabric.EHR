@@ -2,7 +2,6 @@
 docker stop fabric.ehr
 docker rm fabric.ehr
 docker build -t fabric.ehr .
-cd ..
 
 for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "IPv4"') do set ip=%%b
 set ip=%ip:~1%

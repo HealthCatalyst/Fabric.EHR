@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos:centos7
 MAINTAINER Health Catalyst <imran.qureshi@healthcatalyst.com>
 
 RUN yum -y update; yum clean all
