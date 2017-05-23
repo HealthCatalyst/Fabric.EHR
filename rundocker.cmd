@@ -1,9 +1,6 @@
 @echo off
 docker stop fabric.ehr
 docker rm fabric.ehr
-cd Fabric.Databus.API
-dotnet publish --output obj/Docker/publish
-copy .\ca.crt obj\Docker\publish\
 docker build -t fabric.ehr .
 cd ..
 
