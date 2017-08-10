@@ -9,6 +9,15 @@
 <body>
     Loading...
     <script>
+        var code = getUrlParameter("code"); // authorization code
+
+        if (code) {
+            // if request is already authenticated then just redirect to index.html
+            var redirectUriIndex = window.location.href.replace("launch.html", "index.html");
+            window.location.href = redirectUriIndex;
+        }
+
+
         // Change this to the ID of the client that you registered with the SMART on FHIR authorization server.
         //var clientId = "9c8e0459-b166-4c13-aaab-a964d64d094c";
 
