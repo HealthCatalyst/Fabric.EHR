@@ -8,7 +8,7 @@ app.get('/', function(req, res) {
 });
 
 //app.use('/fhir-app', express.static('simple-fhir-app'));
-app.use('/fhir-app', express.static('fhir-app'));
+app.use('/fhir-app', express.static('smartonfhir/fhir-app'));
 
 /* app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
