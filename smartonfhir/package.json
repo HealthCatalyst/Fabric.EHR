@@ -1,0 +1,9 @@
+{
+    "name": "server",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "http-server -p 8000"
+    },
+    "dependencies": {}
+}
