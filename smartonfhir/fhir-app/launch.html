@@ -10,7 +10,8 @@
     Loading...
     <script>
         // Change this to the ID of the client that you registered with the SMART on FHIR authorization server.
-        var clientId = "9c8e0459-b166-4c13-aaab-a964d64d094c";
+        //var clientId = "9c8e0459-b166-4c13-aaab-a964d64d094c";
+        var clientId = "my_web_app";
 
         // For demonstration purposes, if you registered a confidential client
         // you can enter its secret here. The demo app will pretend it's a confidential
@@ -28,9 +29,7 @@
         //      2. permission to launch the app in the specific context
         var scope = [
             "patient/*.read",
-            "launch",
-            "openid",
-            "profile"
+            "launch"
         ].join(" ");
 
 
