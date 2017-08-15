@@ -72,6 +72,18 @@
 
                 console.trace(pt);
             });
+
+            var urlMedications = serviceUri + "/Medication/" + patientId;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                headers: {
+                    "Authorization": "Bearer " + accessToken
+                },
+            }).done(function(meds) {
+                console.trace(meds);
+            });
         });
 
         // Convenience function for parsing of URL parameters
