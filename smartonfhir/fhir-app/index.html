@@ -62,7 +62,13 @@
                 },
             }).done(function(pt) {
                 var name = pt.name[0].given.join(" ") + " " + pt.name[0].family.join(" ");
-                document.body.innerHTML += "<h3>Patient: " + name + "</h3>";
+                var text = "";
+                text += "<h3>Patient: " + name + "</h3>";
+                text += "<h4>DOB: " + pt.birthDate + "</h4>";
+                text += "<h4>Marital Status: " + pt.maritalStatus.text + "</h4>";
+
+                document.body.innerHTML += text;
+
                 console.trace(pt);
             });
         });
