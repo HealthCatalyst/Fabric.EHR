@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('setimmediate');
 
 app.set('port', process.env.PORT || 8000);
 
