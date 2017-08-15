@@ -73,7 +73,7 @@
                 console.trace(pt);
             });
 
-            var urlMedications = serviceUri + "/Patient/" + patientId + "/Medication";
+            var urlMedications = serviceUri + "/Patient/" + patientId + "/MedicationPrescription";
             $.ajax({
                 url: urlMedications,
                 type: "GET",
