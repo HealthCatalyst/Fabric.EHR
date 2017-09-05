@@ -9,8 +9,13 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+app.set('port', process.env.PORT || 3000);
 
 app.locals.moment = require('moment');
+
+process.argv.forEach(function(val, index, array) {
+    console.log(index + ': ' + val);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
