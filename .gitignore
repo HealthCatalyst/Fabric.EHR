@@ -1,4 +1,3 @@
-server/bin
 server/node_modules
 smartonfhir/node_modules
 node_modules
