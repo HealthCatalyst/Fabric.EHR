@@ -45,6 +45,9 @@ module.exports = {
     loadControlledSubstances: function(patientId, callback) {
         this.executeQuery('SELECT * FROM ControlledSubstances WHERE PatientID=' + patientId, callback);
     },
+    loadControlledSubstanceItems: function(patientId, callback) {
+        this.executeQuery('SELECT * FROM ControlledSubstanceItems WHERE PatientID=' + patientId, callback);
+    },
     loadRegistries: function(patientId, callback) {
         this.executeQuery('SELECT * FROM Registries WHERE PatientID=' + patientId, callback);
     }

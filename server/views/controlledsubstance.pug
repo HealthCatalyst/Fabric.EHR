@@ -12,8 +12,14 @@ block content
     each controlledSubstance, i in controlledSubstances
       div(class='controlledsubstance')
         div= controlledSubstance.MedicationName.value
-        div= moment(controlledSubstance.DatePrescribed.value).format("MMM Do YYYY")             
-        div= controlledSubstance.PrescribedByDoctor.value   
+        div(class='controlledsubstancelastdate')= moment(controlledSubstance.DatePrescribed.value).format("MMM Do YYYY")             
+        div(class='controlledsubstanceContainer')
+          ol
+            each controlledSubstanceItem, i in controlledSubstance.controlledSubstanceItems
+              li(class='controlledsubstanceItem')
+                div(class='controlledsubstanceItemName') #{controlledSubstanceItem.ItemName.value}
+                div(class='controlledsubstanceItemDate')= moment(controlledSubstanceItem.DatePrescribed.value).format("MMM Do YYYY")    
+                div(class='controlledsubstanceItemDr')= controlledSubstanceItem.PrescribedByDoctor.value
 
   div(class='links')
     div

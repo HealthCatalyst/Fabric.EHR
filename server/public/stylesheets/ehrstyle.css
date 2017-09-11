@@ -60,3 +60,27 @@ body {
     font-size: 120%;
     font-weight: bold;
 }
+
+.controlledsubstanceContainer ol {
+    padding: 10px;
+}
+
+.controlledsubstancelastdate {
+    color: gray;
+    font-size: 80%;
+    font-style: italic;
+}
+
+.controlledsubstanceItem {
+    padding-bottom: 5px;
+}
+
+.controlledsubstanceItemDate {
+    color: gray;
+    font-size: 80%;
+}
+
+.controlledsubstanceItemDr {
+    color: gray;
+    font-size: 80%;
+}
