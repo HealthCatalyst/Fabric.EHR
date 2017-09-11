@@ -8,8 +8,6 @@ var router = express.Router();
 router.get('/:patientId', function(req, res, next) {
     var patientId = req.params.patientId;
     var insightRows = [];
-    var controlledSubstances = [];
-    var registries = [];
     var patient = {};
 
     sqlclient.loadPatient(patientId, function(err, rows) {
@@ -58,32 +56,11 @@ router.get('/:patientId', function(req, res, next) {
                     insight.insightItems.push(element);
                 });
 
-                sqlclient.loadControlledSubstances(patientId, function(err, rows) {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).send(err);
-                        return;
-                    }
-
-                    controlledSubstances = rows;
-
-                    sqlclient.loadRegistries(patientId, function(err, rows) {
-                        if (err) {
-                            console.log(err);
-                            res.status(500).send(err);
-                            return;
-                        } else {
-                            registries = rows;
-                            res.render('insightspane', {
-                                title: 'Fabric Pane',
-                                patientName: patientId, // 'Jim Jones',
-                                patient: patient,
-                                insights: insightRows,
-                                controlledSubstances: controlledSubstances,
-                                registries: registries
-                            });
-                        }
-                    });
+                res.render('insightspane', {
+                    title: 'Optimizing Choices',
+                    patientName: patientId, // 'Jim Jones',
+                    patient: patient,
+                    insights: insightRows
                 });
             });
         });

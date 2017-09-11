@@ -5,39 +5,11 @@ block content
     div(class='patientName') #{patient.LastName.value}, #{patient.FirstName.value}
     div(class='patientMrn') MRN: #{patient.MRN.value}
 
-  div(class='insights')
-    each insight, i in insights
-      div(class="insight")
-        div(class='insightName')= insight.InsightName.value
-        div(class='insightDate')=moment(insight.DateCreated.value).format("MMM Do YYYY")
-        div(class='insightItemContainer')
-          each insightItem, i in insight.insightItems
-            div(class='insightItem')
-              div(class='insightItemName')= insightItem.ItemName.value
-              div(class='insightItemText')!= insightItem.ItemText.value
+  div(class='controlledsubstances')
+    each controlledSubstance, i in controlledSubstances
+      div(class='controlledsubstance')
+        div= controlledSubstance.MedicationName.value
+        div= moment(controlledSubstance.DatePrescribed.value).format("MMM Do YYYY")             
+        div= controlledSubstance.PrescribedByDoctor.value   
 
   br
-
-  div
-    table
-      thead
-        tr: th Controlled Substances
-      tbody
-        each controlledSubstance, i in controlledSubstances
-          tr
-            td= controlledSubstance.MedicationName.value
-            td= moment(controlledSubstance.DatePrescribed.value).format("MMM Do YYYY")             
-            td= controlledSubstance.PrescribedByDoctor.value            
-
-  br
-
-  div
-    table
-      thead
-        tr: th Registries
-      tbody
-        each registry, i in registries
-          tr
-            td= registry.RegistryName.value
-            td= moment(registry.DateAdded.value).format("MMM Do YYYY")             
-        
