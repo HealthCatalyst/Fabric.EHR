@@ -41,7 +41,10 @@ router.get('/fabricpane/:patientId', function(req, res, next) {
             // now merge in the data into insightRows
             rows.forEach(function(element) {
                 var insightId = element.InsightId.value;
-                insightRows[insightId].insightItems.push(element);
+                var insight = insightRows.find(function(item) {
+                    return item.InsightId.value === insightId;
+                });
+                insight.insightItems.push(element);
             });
 
             sqlclient.loadControlledSubstances(patientId, function(err, rows) {

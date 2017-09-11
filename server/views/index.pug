@@ -5,16 +5,14 @@ block content
   p PatientId: #{patientName}
 
   div
-    table
-      thead
-        tr: th Insights
-      tbody
-        each insight, i in insights
-          tr
-            td= insight.InsightName.value
-            td= moment(insight.DateCreated.value).format("MMM Do YYYY")             
-              each insightItem, i in insight.insightItems
-                div= insightItem.ItemName.value
+    each insight, i in insights
+      div
+        div(class='insightName')= insight.InsightName.value
+        div=moment(insight.DateCreated.value).format("MMM Do YYYY")
+        div
+          each insightItem, i in insight.insightItems
+            div= insightItem.ItemName.value
+
   br
 
   div
