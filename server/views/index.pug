@@ -1,8 +1,9 @@
 extends layout
 
 block content
-  h4= title
-  p PatientId: #{patientName}
+  div(class='patient')
+    div(class='patientName') #{patient.LastName.value}, #{patient.FirstName.value}
+    div(class='patientMrn') MRN: #{patient.MRN.value}
 
   div(class='insights')
     each insight, i in insights

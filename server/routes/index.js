@@ -10,8 +10,9 @@ router.get('/fabricpane/:patientId', function(req, res, next) {
     var insightRows = [];
     var controlledSubstances = [];
     var registries = [];
+    var patient = {};
 
-    sqlclient.loadPatientInsights(patientId, function(err, rows) {
+    sqlclient.loadPatient(patientId, function(err, rows) {
 
         if (err) {
             console.log(err);
@@ -19,14 +20,9 @@ router.get('/fabricpane/:patientId', function(req, res, next) {
             return;
         }
 
-        insightRows = rows;
+        patient = rows[0];
 
-        insightRows.forEach(function(element) {
-            element.insightItems = [];
-            element.insightLinks = [];
-        });
-
-        sqlclient.loadPatientInsightItems(patientId, function(err, rows) {
+        sqlclient.loadPatientInsights(patientId, function(err, rows) {
 
             if (err) {
                 console.log(err);
@@ -34,43 +30,60 @@ router.get('/fabricpane/:patientId', function(req, res, next) {
                 return;
             }
 
-            console.log("---- insightitems ----");
-            console.log(rows);
-            console.log("---- end insightitems ----");
+            insightRows = rows;
 
-            // now merge in the data into insightRows
-            rows.forEach(function(element) {
-                var insightId = element.InsightId.value;
-                var insight = insightRows.find(function(item) {
-                    return item.InsightId.value === insightId;
-                });
-                insight.insightItems.push(element);
+            insightRows.forEach(function(element) {
+                element.insightItems = [];
+                element.insightLinks = [];
             });
 
-            sqlclient.loadControlledSubstances(patientId, function(err, rows) {
+            sqlclient.loadPatientInsightItems(patientId, function(err, rows) {
+
                 if (err) {
                     console.log(err);
                     res.status(500).send(err);
                     return;
                 }
 
-                controlledSubstances = rows;
+                console.log("---- insightitems ----");
+                console.log(rows);
+                console.log("---- end insightitems ----");
 
-                sqlclient.loadRegistries(patientId, function(err, rows) {
+                // now merge in the data into insightRows
+                rows.forEach(function(element) {
+                    var insightId = element.InsightId.value;
+                    var insight = insightRows.find(function(item) {
+                        return item.InsightId.value === insightId;
+                    });
+                    insight.insightItems.push(element);
+                });
+
+                sqlclient.loadControlledSubstances(patientId, function(err, rows) {
                     if (err) {
                         console.log(err);
                         res.status(500).send(err);
                         return;
-                    } else {
-                        registries = rows;
-                        res.render('index', {
-                            title: 'Fabric Pane',
-                            patientName: patientId, // 'Jim Jones',
-                            insights: insightRows,
-                            controlledSubstances: controlledSubstances,
-                            registries: registries
-                        });
                     }
+
+                    controlledSubstances = rows;
+
+                    sqlclient.loadRegistries(patientId, function(err, rows) {
+                        if (err) {
+                            console.log(err);
+                            res.status(500).send(err);
+                            return;
+                        } else {
+                            registries = rows;
+                            res.render('index', {
+                                title: 'Fabric Pane',
+                                patientName: patientId, // 'Jim Jones',
+                                patient: patient,
+                                insights: insightRows,
+                                controlledSubstances: controlledSubstances,
+                                registries: registries
+                            });
+                        }
+                    });
                 });
             });
         });

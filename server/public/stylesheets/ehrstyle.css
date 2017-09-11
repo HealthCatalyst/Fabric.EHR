@@ -2,6 +2,20 @@ body {
     background-color: GhostWhite;
 }
 
+.patient {
+    background-color: #27332F;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.patient .patientName {
+    padding-left: 20px;
+}
+
+.patient .patientMrn {
+    padding-left: 20px;
+}
+
 .insight {
     padding-bottom: 10px;
 }
@@ -23,11 +37,18 @@ body {
     padding-bottom: 5px;
 }
 
+.insightItem ul {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+}
+
 .insightItemName {
     color: gray;
 }
 
 .emphasis {
     color: red;
-    font-size: 125%;
+    font-size: 120%;
+    font-weight: bold;
 }

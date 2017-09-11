@@ -1,9 +1,23 @@
 
+TRUNCATE TABLE dbo.Patients;
 TRUNCATE TABLE dbo.Insights;
 TRUNCATE TABLE dbo.InsightItems;
 TRUNCATE TABLE dbo.InsightLinks;
 TRUNCATE TABLE dbo.ControlledSubstances;
 TRUNCATE TABLE dbo.Registries;
+
+INSERT INTO [dbo].[Patients]([PatientId],LastName,FirstName,MRN)
+VALUES(1, 'Jones', 'James', 'AR472824' )
+GO
+
+INSERT INTO [dbo].[Patients]([PatientId],LastName,FirstName,MRN)
+VALUES(2, 'Brown', 'Joe', 'JN4354363' )
+GO
+
+INSERT INTO [dbo].[Patients]([PatientId],LastName,FirstName,MRN)
+VALUES(3, 'Kane', 'Liam', 'KN42233334' )
+GO
+
 
 INSERT INTO [dbo].[Insights]
            ([PatientId]
