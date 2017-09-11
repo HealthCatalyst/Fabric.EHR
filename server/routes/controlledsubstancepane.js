@@ -5,7 +5,7 @@ var sqlclient = require('../sqlclient');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/fabricpane/:patientId', function(req, res, next) {
+router.get('/:patientId', function(req, res, next) {
     var patientId = req.params.patientId;
     var insightRows = [];
     var controlledSubstances = [];
@@ -74,7 +74,7 @@ router.get('/fabricpane/:patientId', function(req, res, next) {
                             return;
                         } else {
                             registries = rows;
-                            res.render('index', {
+                            res.render('controlledsubstance', {
                                 title: 'Fabric Pane',
                                 patientName: patientId, // 'Jim Jones',
                                 patient: patient,

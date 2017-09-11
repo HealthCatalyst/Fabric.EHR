@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var insightspane = require('./routes/insightspane');
+var controlledsubstancepane = require('./routes/controlledsubstancepane');
 var users = require('./routes/users');
 
 var app = express();
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/fabricpane', insightspane);
+app.use('/controlledsubstancepane', controlledsubstancepane);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

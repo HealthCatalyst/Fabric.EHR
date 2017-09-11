@@ -74,7 +74,7 @@ router.get('/:patientId', function(req, res, next) {
                             return;
                         } else {
                             registries = rows;
-                            res.render('index', {
+                            res.render('insightspane', {
                                 title: 'Fabric Pane',
                                 patientName: patientId, // 'Jim Jones',
                                 patient: patient,
