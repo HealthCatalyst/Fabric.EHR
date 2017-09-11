@@ -32,7 +32,7 @@ INSERT INTO [dbo].[InsightItems]
      VALUES
            (1,1,1
            ,'Daily Opioid MME Threshold'
-            , '50 (^ 28% in past 6 months)'
+            , '<span class=emphasis>50</span> (^ 28% in past 6 months)'
            ,'04-25-2017')
 GO
 
@@ -47,7 +47,7 @@ INSERT INTO [dbo].[InsightItems]
      VALUES
            (1,1,2
            ,'% Days Uses Opioid Over 50 MME' 
-            , '25.54% (22,845 days/ 89,446 days)'
+            , '<span class=emphasis>25.54%</span> (22,845 days/ 89,446 days)'
            ,'04-25-2017')
 GO
 
@@ -62,7 +62,7 @@ INSERT INTO [dbo].[InsightItems]
      VALUES
            (1,1,3
            ,'% Patient Encounter Uses Opioid Over 50 MME' 
-            , '21.41% (9,284/43,371)'
+            , '<span class=emphasis>21.41%</span> (9,284/43,371)'
            ,'04-25-2017')
 GO
 
@@ -77,7 +77,7 @@ INSERT INTO [dbo].[InsightItems]
      VALUES
            (1,1,4
            ,'Risk Factors' 
-            , '- Family History of Addiction, - Diagnosed Depression'
+            , '<ul><li>Family History of Addiction</li><li>Diagnosed Depression</li></ul>'
            ,'04-25-2017')
 GO
 

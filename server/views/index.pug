@@ -4,14 +4,16 @@ block content
   h4= title
   p PatientId: #{patientName}
 
-  div
+  div(class='insights')
     each insight, i in insights
-      div
+      div(class="insight")
         div(class='insightName')= insight.InsightName.value
-        div=moment(insight.DateCreated.value).format("MMM Do YYYY")
-        div
+        div(class='insightDate')=moment(insight.DateCreated.value).format("MMM Do YYYY")
+        div(class='insightItemContainer')
           each insightItem, i in insight.insightItems
-            div= insightItem.ItemName.value
+            div(class='insightItem')
+              div(class='insightItemName')= insightItem.ItemName.value
+              div(class='insightItemText')!= insightItem.ItemText.value
 
   br
 

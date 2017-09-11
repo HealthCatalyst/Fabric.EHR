@@ -1,7 +1,33 @@
 body {
-    background-color: lightblue;
+    background-color: GhostWhite;
+}
+
+.insight {
+    padding-bottom: 10px;
 }
 
 .insightName {
     font-weight: bold;
+}
+
+.insightDate {
+    font-style: italic;
+}
+
+.insightItemContainer {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.insightItem {
+    padding-bottom: 5px;
+}
+
+.insightItemName {
+    color: gray;
+}
+
+.emphasis {
+    color: red;
+    font-size: 125%;
 }
