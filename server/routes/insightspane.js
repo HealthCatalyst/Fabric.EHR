@@ -43,10 +43,6 @@ router.get('/:patientId', function(req, res, next) {
                     return;
                 }
 
-                console.log("---- insightitems ----");
-                console.log(rows);
-                console.log("---- end insightitems ----");
-
                 // now merge in the data into insightRows
                 rows.forEach(function(element) {
                     var insightId = element.InsightId.value;
@@ -58,7 +54,8 @@ router.get('/:patientId', function(req, res, next) {
 
                 res.render('insightspane', {
                     title: 'Optimizing Choices',
-                    patientName: patientId, // 'Jim Jones',
+                    patientId: patientId, // 'Jim Jones',
+                    urltocontrolledsubstancepane: '/controlledsubstancepane/' + patientId,
                     patient: patient,
                     insights: insightRows
                 });

@@ -33,6 +33,7 @@ router.get('/:patientId', function(req, res, next) {
             res.render('controlledsubstance', {
                 title: 'Controlled Substances',
                 patientName: patientId, // 'Jim Jones',
+                urltoinsightspane: '/fabricpane/' + patientId,
                 patient: patient,
                 controlledSubstances: controlledSubstances
             });
