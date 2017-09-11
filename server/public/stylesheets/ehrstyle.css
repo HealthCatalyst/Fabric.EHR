@@ -5,15 +5,23 @@ body {
 .patient {
     background-color: #27332F;
     color: white;
-    margin-bottom: 10px;
 }
 
 .patient .patientName {
     padding-left: 20px;
+    font-weight: bold;
 }
 
 .patient .patientMrn {
     padding-left: 20px;
+}
+
+.title {
+    background-color: #27332F;
+    color: white;
+    font-size: 150%;
+    margin-bottom: 10px;
+    padding-left: 2px;
 }
 
 .insight {

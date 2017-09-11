@@ -5,6 +5,9 @@ block content
     div(class='patientName') #{patient.LastName.value}, #{patient.FirstName.value}
     div(class='patientMrn') MRN: #{patient.MRN.value}
 
+  div(class='title')
+    div #{title}
+
   div(class='insights')
     each insight, i in insights
       div(class="insight")
