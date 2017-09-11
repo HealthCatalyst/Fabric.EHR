@@ -36,6 +36,9 @@ module.exports = {
     loadPatientInsights: function(patientId, callback) {
         this.executeQuery('SELECT * FROM Insights WHERE PatientID=' + patientId, callback);
     },
+    loadPatientInsightItems: function(patientId, callback) {
+        this.executeQuery('SELECT * FROM InsightItems WHERE PatientID=' + patientId, callback);
+    },
     loadControlledSubstances: function(patientId, callback) {
         this.executeQuery('SELECT * FROM ControlledSubstances WHERE PatientID=' + patientId, callback);
     },

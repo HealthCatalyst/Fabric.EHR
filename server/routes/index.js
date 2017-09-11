@@ -18,32 +18,57 @@ router.get('/fabricpane/:patientId', function(req, res, next) {
             res.status(500).send(err);
             return;
         }
+
         insightRows = rows;
 
-        sqlclient.loadControlledSubstances(patientId, function(err, rows) {
+        insightRows.forEach(function(element) {
+            element.insightItems = [];
+            element.insightLinks = [];
+        });
+
+        sqlclient.loadPatientInsightItems(patientId, function(err, rows) {
+
             if (err) {
                 console.log(err);
                 res.status(500).send(err);
                 return;
             }
 
-            controlledSubstances = rows;
+            console.log("---- insightitems ----");
+            console.log(rows);
+            console.log("---- end insightitems ----");
 
-            sqlclient.loadRegistries(patientId, function(err, rows) {
+            // now merge in the data into insightRows
+            rows.forEach(function(element) {
+                var insightId = element.InsightId.value;
+                insightRows[insightId].insightItems.push(element);
+            });
+
+            sqlclient.loadControlledSubstances(patientId, function(err, rows) {
                 if (err) {
                     console.log(err);
                     res.status(500).send(err);
                     return;
-                } else {
-                    registries = rows;
-                    res.render('index', {
-                        title: 'Fabric Pane',
-                        patientName: patientId, // 'Jim Jones',
-                        insights: insightRows,
-                        controlledSubstances: controlledSubstances,
-                        registries: registries
-                    });
                 }
+
+                controlledSubstances = rows;
+
+                sqlclient.loadRegistries(patientId, function(err, rows) {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send(err);
+                        return;
+                    } else {
+                        registries = rows;
+                        res.render('index', {
+                            title: 'Fabric Pane',
+                            patientName: patientId, // 'Jim Jones',
+                            insights: insightRows,
+                            controlledSubstances: controlledSubstances,
+                            registries: registries
+                        });
+                    }
+                });
             });
         });
     });
