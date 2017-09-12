@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  div(class='title')
-    div #{title}
+  div(class='ehrframe')
+    div(class='title ehrtitle')
+      div #{title}
+
+    div(class='ehr')
+      div(class='ehrleft')
+      div(class='ehrpane')
+        iframe(src='/fabricpane/1' class='ehrpaneiframe' frameBorder='0')
