@@ -12,7 +12,7 @@ VALUES(1, 'Jones', 'James', 'AR472824' )
 GO
 
 INSERT INTO [dbo].[Patients]([PatientId],LastName,FirstName,MRN)
-VALUES(2, 'Brown', 'Joe', 'JN4354363' )
+VALUES(2, 'Brown', 'Jolene', 'JN4354363' )
 GO
 
 INSERT INTO [dbo].[Patients]([PatientId],LastName,FirstName,MRN)
