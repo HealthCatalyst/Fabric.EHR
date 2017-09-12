@@ -17,5 +17,7 @@ module.exports = {
         // whatever
         console.log("Hello");
     },
-    databaseconfig: databaseconfig
+    getconfig: function(req) {
+        return databaseconfig;
+    }
 };

@@ -3,17 +3,17 @@
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
-var config = require('./config').databaseconfig;
+var config = require('./config');
 
 module.exports = {
     foo: function() {
         // whatever
         console.log("Hello");
     },
-    executeQuery: function( /*string*/ query, callback) {
+    executeQuery: function(host, /*string*/ query, callback) {
         // whatever
         console.log("executeQuery");
-        var connection = new Connection(config);
+        var connection = new Connection(config.getconfig(host));
 
         connection.on('connect', function(err) {
             if (err) {
@@ -24,23 +24,23 @@ module.exports = {
             }
         });
     },
-    loadPatient: function(patientId, callback) {
-        this.executeQuery('SELECT * FROM Patients WHERE PatientID=' + patientId, callback);
+    loadPatient: function(host, patientId, callback) {
+        this.executeQuery(host, 'SELECT * FROM Patients WHERE PatientID=' + patientId, callback);
     },
-    loadPatientInsights: function(patientId, callback) {
-        this.executeQuery('SELECT * FROM Insights WHERE PatientID=' + patientId, callback);
+    loadPatientInsights: function(host, patientId, callback) {
+        this.executeQuery(host, 'SELECT * FROM Insights WHERE PatientID=' + patientId, callback);
     },
-    loadPatientInsightItems: function(patientId, callback) {
-        this.executeQuery('SELECT * FROM InsightItems WHERE PatientID=' + patientId, callback);
+    loadPatientInsightItems: function(host, patientId, callback) {
+        this.executeQuery(host, 'SELECT * FROM InsightItems WHERE PatientID=' + patientId, callback);
     },
-    loadControlledSubstances: function(patientId, callback) {
-        this.executeQuery('SELECT * FROM ControlledSubstances WHERE PatientID=' + patientId, callback);
+    loadControlledSubstances: function(host, patientId, callback) {
+        this.executeQuery(host, 'SELECT * FROM ControlledSubstances WHERE PatientID=' + patientId, callback);
     },
-    loadControlledSubstanceItems: function(patientId, callback) {
-        this.executeQuery('SELECT * FROM ControlledSubstanceItems WHERE PatientID=' + patientId, callback);
+    loadControlledSubstanceItems: function(host, patientId, callback) {
+        this.executeQuery(host, 'SELECT * FROM ControlledSubstanceItems WHERE PatientID=' + patientId, callback);
     },
-    loadRegistries: function(patientId, callback) {
-        this.executeQuery('SELECT * FROM Registries WHERE PatientID=' + patientId, callback);
+    loadRegistries: function(host, patientId, callback) {
+        this.executeQuery(host, 'SELECT * FROM Registries WHERE PatientID=' + patientId, callback);
     }
 };
 

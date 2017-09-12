@@ -10,7 +10,11 @@ router.get('/:patientId', function(req, res, next) {
     var insightRows = [];
     var patient = {};
 
-    sqlclient.loadPatient(patientId, function(err, rows) {
+    var host = req.headers.host;
+    console.log("host: " + host);
+    //    console.log(req.headers);
+
+    sqlclient.loadPatient(host, patientId, function(err, rows) {
 
         if (err) {
             console.log(err);
@@ -20,7 +24,7 @@ router.get('/:patientId', function(req, res, next) {
 
         patient = rows[0];
 
-        sqlclient.loadPatientInsights(patientId, function(err, rows) {
+        sqlclient.loadPatientInsights(host, patientId, function(err, rows) {
 
             if (err) {
                 console.log(err);
@@ -35,7 +39,7 @@ router.get('/:patientId', function(req, res, next) {
                 element.insightLinks = [];
             });
 
-            sqlclient.loadPatientInsightItems(patientId, function(err, rows) {
+            sqlclient.loadPatientInsightItems(host, patientId, function(err, rows) {
 
                 if (err) {
                     console.log(err);

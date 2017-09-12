@@ -10,7 +10,10 @@ router.get('/:patientId', function(req, res, next) {
     var controlledSubstances = [];
     var patient = {};
 
-    sqlclient.loadPatient(patientId, function(err, rows) {
+    var host = req.headers.host;
+    console.log("host: " + host);
+
+    sqlclient.loadPatient(host, patientId, function(err, rows) {
 
         if (err) {
             console.log(err);
@@ -21,7 +24,7 @@ router.get('/:patientId', function(req, res, next) {
         patient = rows[0];
 
 
-        sqlclient.loadControlledSubstances(patientId, function(err, rows) {
+        sqlclient.loadControlledSubstances(host, patientId, function(err, rows) {
             if (err) {
                 console.log(err);
                 res.status(500).send(err);
@@ -34,7 +37,7 @@ router.get('/:patientId', function(req, res, next) {
                 element.controlledSubstanceItems = [];
             });
 
-            sqlclient.loadControlledSubstanceItems(patientId, function(err, rows) {
+            sqlclient.loadControlledSubstanceItems(host, patientId, function(err, rows) {
                 if (err) {
                     console.log(err);
                     res.status(500).send(err);
