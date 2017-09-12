@@ -5,7 +5,12 @@ block content
     div(class='title ehrtitle')
       div #{title}
 
+    div(class='ehrpatients')
+      a(onclick='return onpatientclick(1)' href='#' style='padding-right:20px;') Jones, James
+      a(onclick='return onpatientclick(2)' href='#' style='padding-right:20px;') Brown, Jolene
+      a(onclick='return onpatientclick(3)' href='#') Kane, Liam
+
     div(class='ehr')
       div(class='ehrleft')
       div(class='ehrpane')
-        iframe(src='/fabricpane/1' class='ehrpaneiframe' frameBorder='0')
+        iframe(id=ehrpane src=urlehrpane class='ehrpaneiframe' frameBorder='0')

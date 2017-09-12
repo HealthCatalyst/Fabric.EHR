@@ -94,9 +94,13 @@ body {
     height: 5%;
 }
 
+.ehrpatients {
+    height: 5%;
+}
+
 .ehr {
     width: 100%;
-    height: 95%;
+    height: 90%;
 }
 
 .ehrleft {
