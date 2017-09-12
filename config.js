@@ -15,11 +15,12 @@ var databaseconfig = {
 var azuredatabaseconfig = {
     userName: 'dbuser', // update me
     password: 'ILoveEHR!', // update me
-    server: 'tcp:fabricehr.database.windows.net,1433',
+    server: 'fabricehr.database.windows.net',
     options: {
         database: 'InsightsDatabase',
         rowCollectionOnRequestCompletion: true,
-        useColumnNames: true
+        useColumnNames: true,
+        encrypt: true
     }
 };
 
