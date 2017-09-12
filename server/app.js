@@ -30,6 +30,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', function(req, res) {
+    res.send('Fabric.EHR demo');
+});
 app.use('/fabricpane', insightspane);
 app.use('/controlledsubstancepane', controlledsubstancepane);
 app.use('/users', users);
