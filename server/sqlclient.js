@@ -3,16 +3,7 @@
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
-var config = {
-    userName: 'nodeuser', // update me
-    password: 'ILoveNode2017', // update me
-    server: process.env.SQLServer || 'localhost',
-    options: {
-        database: 'InsightsDatabase',
-        rowCollectionOnRequestCompletion: true,
-        useColumnNames: true
-    }
-};
+var config = require('./config').databaseconfig;
 
 module.exports = {
     foo: function() {
