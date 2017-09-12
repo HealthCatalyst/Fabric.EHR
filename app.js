@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var insightspane = require('./routes/insightspane');
 var controlledsubstancepane = require('./routes/controlledsubstancepane');
+var ehrframe = require('./routes/ehrframe');
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -34,6 +35,7 @@ app.get('/', function(req, res) {
 });
 app.use('/fabricpane', insightspane);
 app.use('/controlledsubstancepane', controlledsubstancepane);
+app.use('/ehrframe', ehrframe);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
