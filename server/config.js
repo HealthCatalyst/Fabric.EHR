@@ -12,12 +12,27 @@ var databaseconfig = {
     }
 };
 
+var azuredatabaseconfig = {
+    userName: 'dbuser', // update me
+    password: 'ILoveEHR!', // update me
+    server: 'tcp:fabricehr.database.windows.net,1433',
+    options: {
+        database: 'InsightsDatabase',
+        rowCollectionOnRequestCompletion: true,
+        useColumnNames: true
+    }
+};
+
 module.exports = {
     foo: function() {
         // whatever
         console.log("Hello");
     },
-    getconfig: function(req) {
-        return databaseconfig;
+    getconfig: function(host) {
+        if (host.startsWith("localhost")) {
+            return databaseconfig;
+        } else {
+            return azuredatabaseconfig;
+        }
     }
 };
