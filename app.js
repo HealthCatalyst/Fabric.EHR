@@ -12,6 +12,10 @@ var ehrframe = require('./routes/ehrframe');
 var app = express();
 app.set('port', process.env.PORT || 3000);
 
+var appInsights = require("applicationinsights");
+appInsights.setup("bebe0fcf-1bc1-4b8f-9d60-e6f6203e7764");
+appInsights.start();
+
 app.locals.moment = require('moment');
 
 process.argv.forEach(function(val, index, array) {

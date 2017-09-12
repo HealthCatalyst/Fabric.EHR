@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/imranq2/noderestserver#readme",
   "dependencies": {
+    "applicationinsights": "^0.22.0",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
