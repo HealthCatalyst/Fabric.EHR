@@ -12,9 +12,9 @@ var ehrframe = require('./routes/ehrframe');
 var app = express();
 app.set('port', process.env.PORT || 3000);
 
-var appInsights = require("applicationinsights");
-appInsights.setup("bebe0fcf-1bc1-4b8f-9d60-e6f6203e7764");
-appInsights.start();
+// var appInsights = require("applicationinsights");
+// appInsights.setup("bebe0fcf-1bc1-4b8f-9d60-e6f6203e7764");
+// appInsights.start();
 
 app.locals.moment = require('moment');
 
@@ -40,6 +40,8 @@ app.get('/', function(req, res) {
 app.use('/fabricpane', insightspane);
 app.use('/controlledsubstancepane', controlledsubstancepane);
 app.use('/ehrframe', ehrframe);
+
+app.use('/fhir-app', express.static('smartonfhir/fhir-app'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,3 +1,5 @@
+USE InsightsDatabase;
+GO
 
 TRUNCATE TABLE dbo.Patients;
 TRUNCATE TABLE dbo.Insights;
