@@ -1,30 +1,6 @@
 <div class="sidebar">
 
-	<div class="header">
-		<div class="brand">
-			<img src="/assets/TriFlame.svg" class="tri-flame">
-		</div>
-		<div class="patient-info">
-			<div>{{patientname}}</div>
-			<div class="patient-mrn">MRN: AR4783666</div>
-		</div>
-	</div>
-	<div class="select">
-		<div class="section-name">Sepsis Prevention</div>
-	</div>
-
 	<div class="content">
-		<div class="alert-chip">
-			<span class="alert-icon">
-				<i class="fa fa-exclamation-triangle"></i>
-			</span>
-			<span class="alert-text">This patient has a
-				<b>{{patientrisk.PredictedProbNBR.value}}</b> risk of sepsis</span>
-		</div>
-		<div class="alert-button">
-			Go to Order Set
-		</div>
-
 		<div class="section-header">
 			Relative Risk
 		</div>
@@ -33,10 +9,13 @@
 			Last Updated: 2018-03-03 07:04:13
 		</div>
 
-		<div id="gauge" class="gauge-container" style="display:none"></div>
+		<div id="gauge" class="gauge-container"></div>
 
 		<div class="summary">
 			<span class="highlight">6x</span> higher than dept avg
+			<span class="up-arrow">
+				<i class="fa fa-caret-up"></i>
+			</span>
 		</div>
 
 		<div class="section-header">
@@ -47,6 +26,9 @@
 			<div class="risk-number red">1</div>
 			Temperature:&nbsp;
 			<b>103</b>
+			<span class="up-arrow">
+				<i class="fa fa-caret-up"></i>
+			</span>
 		</div>
 
 		<div class="risk-block">
@@ -59,12 +41,18 @@
 			<div class="risk-number orange">3</div>
 			Age:&nbsp;
 			<b>72</b>
+			<span class="down-arrow">
+				<i class="fa fa-caret-down"></i>
+			</span>
 		</div>
 
 		<div class="risk-block">
 			<div class="risk-number gray">4</div>
 			Systolic:&nbsp;
 			<b>60</b>
+			<span class="down-arrow">
+				<i class="fa fa-caret-down"></i>
+			</span>
 		</div>
 
 		<div class="risk-block">
@@ -73,21 +61,6 @@
 			<b>94</b>
 		</div>
 
-		<div class="risk-block">
-			<div class="risk-number gray">6</div>
-			ED Visits:&nbsp;
-			<b>103</b>
-		</div>
-
-		<div class="risk-block">
-			<div class="risk-number gray">7</div>
-			Prior Abx (7 days):&nbsp;
-			<b>Y</b>
-		</div>
-
-		<div class="disclaimer">
-			The risk factors listed above are the only factors for this patient considered by the sepsis risk model
-		</div>
 	</div>
 
 </div>

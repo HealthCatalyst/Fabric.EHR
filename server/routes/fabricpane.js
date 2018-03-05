@@ -9,6 +9,7 @@ router.get('/:patientId', function(req, res, next) {
     var patientId = req.params.patientId;
     var insightRows = [];
     var patient = {};
+    var patientrisk = {};
 
     var host = req.headers.host;
     console.log("host: " + host);
