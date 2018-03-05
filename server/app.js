@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 require('setimmediate');
 
 var insightspane = require('./routes/insightspane');
+var fabricpane = require('./routes/fabricpane');
 var controlledsubstancepane = require('./routes/controlledsubstancepane');
 var ehrframe = require('./routes/ehrframe');
 
@@ -38,7 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
     res.send('Fabric.EHR demo');
 });
-app.use('/fabricpane', insightspane);
+app.use('/insightspane', insightspane);
+app.use('/fabricpane', fabricpane);
 app.use('/controlledsubstancepane', controlledsubstancepane);
 app.use('/ehrframe', ehrframe);
 
