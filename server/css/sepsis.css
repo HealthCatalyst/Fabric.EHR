@@ -1,0 +1,185 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+.sidebar {
+	background-color: #F1F3F6;
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	max-width: 320px;
+}
+
+.header {
+	display: flex;
+	height: 60px;
+	width: 100%;
+	background-color: #394756;
+}
+
+.brand {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	background-color: #00aeff;
+}
+
+.tri-flame {
+	width: 24px;
+	height: 41px;
+	padding: 0 18px;
+}
+
+.patient-info {
+	color: white;
+	font-size: 16px;
+	align-items: center;
+	margin: 7.5px 0 0 20px;
+	width: 100%;
+	border-bottom: 2px solid #4B5865;
+
+}
+
+.patient-mrn { 
+	color: #CCCCCC;
+	font-size: 14px;
+}
+
+.select {
+	display: flex;
+	height: 50px;
+	width: 100%;
+	align-items: center;
+	background-color: #394756;
+	position: relative;
+}
+
+.select:after {
+	content: "\f078";
+	font-family: FontAwesome;
+	color: #00aeff;
+	padding: 17px 20px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.section-name {
+	color: white;
+	font-size: 20px;
+	font-weight: 500;
+	margin-left: 25px;
+}
+
+.content {
+	padding: 25px;
+}
+
+.alert-chip {
+	color: #EF3F46;
+	background-color: #FFEEED;
+	border: 2px solid #FFD5D9;
+	border-radius: 6px;
+	font-size: 13px;
+	padding: 5px 15px;
+	display: flex;
+	align-items: center;
+}
+
+.alert-icon {
+	display: inline;
+	font-size: 20px;
+	height: 100%;
+}
+
+.alert-text {
+	margin-left: 15px;
+}
+
+.alert-button {
+	background-color: #EF3F46;
+	color: white;
+	align-items: center;
+	height: 35px;
+	width: 100%;
+	line-height: 35px;
+	border-radius: 5px;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	margin: 12px 0;
+	cursor: pointer;
+}
+
+.section-header {
+	color: #333;
+	font-size: 16px;
+	font-weight: 600;
+	margin-top: 40px;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #333;
+}
+
+.update {
+	font-size: 12px;
+	color: #666;
+}
+
+.summary {
+	font-size: 18px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.highlight {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.gauge-container {
+	width: 100%;
+	height: 150px;
+	margin-top: 20px;
+}
+
+.risk-block {
+	display: flex;
+	align-items: center;
+	background-color: white;
+	font-size: 16px;
+	color: #333;
+	margin-bottom: 5px;
+}
+
+.first {
+	margin-top: 15px;
+}
+
+.risk-number {
+	display: block;
+	width: 38px;
+	height: 100%;
+	font-weight: 700;
+	text-align: center;
+	margin-right: 20px;
+	color: white;
+	padding: 8px 0;
+}
+
+.red { background-color: #ED1C24; }
+.orange { background-color: #F8961D; }
+.gray { background-color: #707070; }
+
+.disclaimer {
+	margin-top: 25px;
+	font-size: 10px;
+	font-style: italic;
+}
