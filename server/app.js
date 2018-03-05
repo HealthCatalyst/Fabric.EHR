@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var exphbs = require('express-handlebars');
 require('setimmediate');
 
 var insightspane = require('./routes/insightspane');
@@ -26,7 +27,12 @@ process.argv.forEach(function(val, index, array) {
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// app.set('view engine', 'pug');
+
+// https://github.com/ericf/express-handlebars
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -44,7 +50,14 @@ app.use('/fabricpane', fabricpane);
 app.use('/controlledsubstancepane', controlledsubstancepane);
 app.use('/ehrframe', ehrframe);
 
+//-- static resources --
 app.use('/fhir-app', express.static('smartonfhir/fhir-app'));
+
+app.use('/assets', express.static('assets'));
+app.use('/css', express.static('css'));
+app.use('/js', express.static('js'));
+
+// -- dynamic routes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

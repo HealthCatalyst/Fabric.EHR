@@ -1,41 +1,42 @@
 {
-    "name": "fabric.ehr",
-    "version": "1.0.0",
-    "description": "docker to run healthcare.ai",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "docker-build": "docker build -t fabric.ehr .",
-        "docker-stop": "docker stop fabric.ehr || echo 'no container to stop'",
-        "docker-remove": "docker rm fabric.ehr || echo 'no container to remove'",
-        "docker": "npm run docker-stop && npm run docker-remove && npm run docker-build && docker run -d -p 3000:3000 -e SQLServer=IMRANLAPTOP --name fabric.ehr fabric.ehr",
-        "docker-publish": "docker build -t imranq2/fabric.ehr . && docker push imranq2/fabric.ehr",
-        "start2": "http-server -p 8000",
-        "start3": "node app.js -p 3000",
-        "start": "node ./bin/www"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/imranq2/noderestserver.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/imranq2/noderestserver/issues"
-    },
-    "homepage": "https://github.com/imranq2/noderestserver#readme",
-    "dependencies": {
-        "applicationinsights": "^1.0.2",
-        "body-parser": "~1.18.2",
-        "cookie-parser": "~1.4.3",
-        "debug": "~2.6.3",
-        "express": "^4.16.2",
-        "jquery": "^3.3.1",
-        "moment": "^2.21.0",
-        "morgan": "~1.9.0",
-        "pug": "~2.0.0-rc.4",
-        "serve-favicon": "~2.4.5",
-        "setimmediate": "^1.0.5",
-        "tedious": "^2.3.1"
-    }
+  "name": "fabric.ehr",
+  "version": "1.0.0",
+  "description": "docker to run healthcare.ai",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker-build": "docker build -t fabric.ehr .",
+    "docker-stop": "docker stop fabric.ehr || echo 'no container to stop'",
+    "docker-remove": "docker rm fabric.ehr || echo 'no container to remove'",
+    "docker": "npm run docker-stop && npm run docker-remove && npm run docker-build && docker run -d -p 3000:3000 -e SQLServer=IMRANLAPTOP --name fabric.ehr fabric.ehr",
+    "docker-publish": "docker build -t imranq2/fabric.ehr . && docker push imranq2/fabric.ehr",
+    "start2": "http-server -p 8000",
+    "start3": "node app.js -p 3000",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imranq2/noderestserver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imranq2/noderestserver/issues"
+  },
+  "homepage": "https://github.com/imranq2/noderestserver#readme",
+  "dependencies": {
+    "applicationinsights": "^1.0.2",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "jquery": "^3.3.1",
+    "moment": "^2.21.0",
+    "morgan": "~1.9.0",
+    "pug": "~2.0.0-rc.4",
+    "serve-favicon": "~2.4.5",
+    "setimmediate": "^1.0.5",
+    "tedious": "^2.3.1"
+  }
 }

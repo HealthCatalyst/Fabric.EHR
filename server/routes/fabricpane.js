@@ -14,7 +14,7 @@ router.get('/:patientId', function(req, res, next) {
     console.log("host: " + host);
     //    console.log(req.headers);
 
-    res.render('fabricpane', {
+    res.render('sepsis', {
         title: 'Optimizing Choices',
         patientId: patientId, // 'Jim Jones',
         patient: patient,
