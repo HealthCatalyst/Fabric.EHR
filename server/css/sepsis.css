@@ -77,7 +77,7 @@ body, html {
 }
 
 .content {
-	padding: 20px 25px;
+	padding: 10px 25px;
 }
 
 .alert-chip {
@@ -121,21 +121,21 @@ body, html {
 	color: #333;
 	font-size: 14px;
 	font-weight: 600;
-	margin-bottom: 5px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #333;
 }
 
 .update {
-	font-size: 12px;
+	font-size: 11px;
 	color: #666;
+	margin-top: 5px;
 }
 
 .summary {
-	font-size: 16px;
+	font-size: 14px;
 	width: 100%;
 	text-align: center;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 }
 
 .highlight {
@@ -145,8 +145,8 @@ body, html {
 
 .gauge-container {
 	width: 100%;
-	height: 90px;
-	margin-top: 20px;
+	height: 70px;
+	margin-top: 15px;
 }
 
 .risk-block {
@@ -170,7 +170,7 @@ body, html {
 	text-align: center;
 	margin-right: 20px;
 	color: white;
-	padding: 8px 0;
+	padding: 4px 0;
 }
 
 .red { background-color: #ED1C24; }
