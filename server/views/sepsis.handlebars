@@ -1,5 +1,5 @@
 <div class="sidebar">
-	
+
 	<div class="header">
 		<div class="brand">
 			<img src="/assets/TriFlame.svg" class="tri-flame">
@@ -12,93 +12,120 @@
 	<div class="select">
 		<div class="section-name">Sepsis Prevention</div>
 	</div>
-	
+
 	<div class="content">
 		<div class="alert-chip">
-			<span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
-			<span class="alert-text">This patient has a <b>HIGH</b> risk of sepsis</span>
+			<span class="alert-icon">
+				<i class="fa fa-exclamation-triangle"></i>
+			</span>
+			<span class="alert-text">This patient has a
+				<b>HIGH</b> risk of sepsis</span>
 		</div>
 		<div class="alert-button">
 			Go to Order Set
 		</div>
-		
+
 		<div class="section-header">
 			Relative Risk
 		</div>
-		
-			<div class="update">
-				Last Updated: 2018-03-03 07:04:13
-			</div>
-		
-			<div id="gauge" class="gauge-container"></div>
-		
-			<div class="summary">
-				<span class="highlight">6x</span> higher than dept avg
-			</div>
-		
+
+		<div class="update">
+			Last Updated: 2018-03-03 07:04:13
+		</div>
+
+		<div id="gauge" class="gauge-container"></div>
+
+		<div class="summary">
+			<span class="highlight">6x</span> higher than dept avg
+		</div>
+
 		<div class="section-header">
 			Ranked Risk Factors
 		</div>
-		
-			<div class="risk-block first">
-				<div class="risk-number red">1</div>
-				Temperature:&nbsp; <b>103</b>
-			</div>
 
-			<div class="risk-block">
-				<div class="risk-number red">2</div>
-				Pulse:&nbsp; <b>80</b>
-			</div>
+		<div class="risk-block first">
+			<div class="risk-number red">1</div>
+			Temperature:&nbsp;
+			<b>103</b>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number orange">3</div>
-				Age:&nbsp; <b>72</b>
-			</div>
+		<div class="risk-block">
+			<div class="risk-number red">2</div>
+			Pulse:&nbsp;
+			<b>80</b>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number gray">4</div>
-				Systolic:&nbsp; <b>60</b>
-			</div>
+		<div class="risk-block">
+			<div class="risk-number orange">3</div>
+			Age:&nbsp;
+			<b>72</b>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number gray">5</div>
-				O2 Saturation:&nbsp; <b>94</b>
-			</div>
+		<div class="risk-block">
+			<div class="risk-number gray">4</div>
+			Systolic:&nbsp;
+			<b>60</b>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number gray">6</div>
-				ED Visits:&nbsp; <b>103</b>
-			</div>
+		<div class="risk-block">
+			<div class="risk-number gray">5</div>
+			O2 Saturation:&nbsp;
+			<b>94</b>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number gray">7</div>
-				Prior Abx (7 days):&nbsp; <b>Y</b>
-			</div>
+		<div class="risk-block">
+			<div class="risk-number gray">6</div>
+			ED Visits:&nbsp;
+			<b>103</b>
+		</div>
 
-			<div class="disclaimer">
-				The risk factors listed above are the only factors for this patient considered by the sepsis risk model
-			</div>
+		<div class="risk-block">
+			<div class="risk-number gray">7</div>
+			Prior Abx (7 days):&nbsp;
+			<b>Y</b>
+		</div>
+
+		<div class="disclaimer">
+			The risk factors listed above are the only factors for this patient considered by the sepsis risk model
+		</div>
 	</div>
-	
+
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(event) {
-	var gauge = new JustGage({
-		id: "gauge",
-		value: 0.80,
-		min: 0,
-		max: 1.0,
-		label: "Risk Score",
-		showInnerShadow: true,
-        formatNumber: true,
-		valueFontFamily: "Open Sans",
-		levelColors: [
-          "#00A859",
-          "#F8961D",
-		  "#EF3F46"
-        ]
+	// this is to make event handlers work the same in old IE and new browsers
+	// from: https://johnresig.com/projects/flexible-javascript-events/
+	function addEvent(obj, type, fn) {
+		if (obj.attachEvent) {
+			obj['e' + type + fn] = fn;
+			obj[type + fn] = function () { obj['e' + type + fn](window.event); }
+			obj.attachEvent('on' + type, obj[type + fn]);
+		} else
+			obj.addEventListener(type, fn, false);
+	}
+	function removeEvent(obj, type, fn) {
+		if (obj.detachEvent) {
+			obj.detachEvent('on' + type, obj[type + fn]);
+			obj[type + fn] = null;
+		} else
+			obj.removeEventListener(type, fn, false);
+	}
+
+	addEvent(document, "DOMContentLoaded", function (event) {
+		var gauge = new JustGage({
+			id: "gauge",
+			value: 0.80,
+			min: 0,
+			max: 1.0,
+			label: "Risk Score",
+			showInnerShadow: true,
+			formatNumber: true,
+			valueFontFamily: "Open Sans",
+			levelColors: [
+				"#00A859",
+				"#F8961D",
+				"#EF3F46"
+			]
+		});
 	});
-});
 </script>
-	
