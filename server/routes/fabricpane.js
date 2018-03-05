@@ -14,12 +14,27 @@ router.get('/:patientId', function(req, res, next) {
     console.log("host: " + host);
     //    console.log(req.headers);
 
-    res.render('sepsis', {
-        title: 'Optimizing Choices',
-        patientId: patientId, // 'Jim Jones',
-        patient: patient,
-    });
+    sqlclient.loadRisk(host, patientId, function(err, rows) {
 
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+            return;
+        }
+
+        if (typeof rows !== 'undefined' && rows.length > 0) {
+            patientrisk = rows[0];
+            console.info(patientrisk);
+        }
+        res.render('sepsis', {
+            title: 'Optimizing Choices',
+            patientId: patientId, // 'Jim Jones',
+            patientrisk: patientrisk,
+            patientname: "Jim Jones"
+        });
+    });
 });
+
+// host.docker.internal
 
 module.exports = router;

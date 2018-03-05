@@ -4,9 +4,9 @@
 var databaseconfig = {
     userName: 'nodeuser', // update me
     password: 'ILoveNode2017', // update me
-    server: process.env.SQLServer || 'localhost',
+    server: process.env.SQLServer || 'localhost' || 'host.docker.internal',
     options: {
-        database: 'InsightsDatabase',
+        database: 'SAM',
         rowCollectionOnRequestCompletion: true,
         useColumnNames: true
     }

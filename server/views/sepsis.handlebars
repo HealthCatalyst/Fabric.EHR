@@ -5,7 +5,7 @@
 			<img src="/assets/TriFlame.svg" class="tri-flame">
 		</div>
 		<div class="patient-info">
-			<div>Wade Wilson</div>
+			<div>{{patientname}}</div>
 			<div class="patient-mrn">MRN: AR4783666</div>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 				<i class="fa fa-exclamation-triangle"></i>
 			</span>
 			<span class="alert-text">This patient has a
-				<b>HIGH</b> risk of sepsis</span>
+				<b>{{patientrisk.PredictedProbNBR.value}}</b> risk of sepsis</span>
 		</div>
 		<div class="alert-button">
 			Go to Order Set
@@ -33,7 +33,7 @@
 			Last Updated: 2018-03-03 07:04:13
 		</div>
 
-		<div id="gauge" class="gauge-container"></div>
+		<div id="gauge" class="gauge-container" style="display:none"></div>
 
 		<div class="summary">
 			<span class="highlight">6x</span> higher than dept avg

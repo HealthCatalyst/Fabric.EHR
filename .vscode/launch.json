@@ -7,11 +7,11 @@
             "port": 9222,
             "webRoot": "${workspaceRoot}"
         },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${file}"
-        }
+{
+    "type": "node",
+    "request": "launch",
+    "name": "Launch Node.js",
+    "program": "${workspaceFolder}/server/bin/www"
+}
     ]
 }
