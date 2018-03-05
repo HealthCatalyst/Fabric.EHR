@@ -14,6 +14,8 @@ router.get('/:patientId', function(req, res, next) {
     console.log("host: " + host);
     //    console.log(req.headers);
 
+    console.log("patientId:", patientId);
+
     sqlclient.loadRisk(host, patientId, function(err, rows) {
 
         if (err) {

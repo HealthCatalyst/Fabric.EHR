@@ -43,7 +43,7 @@ module.exports = {
         this.executeQuery(host, 'SELECT * FROM Registries WHERE PatientID=' + patientId, callback);
     },
     loadRisk: function(host, patientId, callback) {
-        this.executeQuery(host, 'SELECT TOP 1 FacilityAccountID, PredictedProbNBR, Factor1TXT,Factor2TXT,Factor3TXT,LastCalculatedDTS FROM Sepsis.EWSSummaryPatientRiskBASENew where FacilityAccountID = ' + patientId + ' ORDER BY LastCalculatedDTS DESC', callback);
+        this.executeQuery(host, 'SELECT TOP 1 FacilityAccountID, PredictedProbNBR, Factor1TXT,Factor2TXT,Factor3TXT,LastCalculatedDTS FROM Sepsis.EWSPredictionsBASE where FacilityAccountID = ' + patientId + ' ORDER BY LastCalculatedDTS DESC', callback);
     }
 };
 
