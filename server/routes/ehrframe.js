@@ -1,5 +1,5 @@
 var express = require('express');
-var $ = require('jQuery');
+// var $ = require('jQuery');
 
 var router = express.Router();
 

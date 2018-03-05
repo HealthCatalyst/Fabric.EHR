@@ -20,11 +20,18 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 RUN node --version
 
+RUN mkdir -p /server
 # add our project
-ADD server /server
+COPY server/ /server/
 
-RUN cd /server; npm install
+# RUN ls -la /server/*
+
+WORKDIR /server
+
+RUN npm install
 
 EXPOSE 3000
 
-CMD ["node", "/server/bin/www"]
+# CMD ["sh", "-c", "tail -f /dev/null"]
+# CMD ["node", "/server/bin/www"]
+CMD [ "npm", "start" ]
