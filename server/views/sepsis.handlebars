@@ -1,67 +1,83 @@
 <div class="sidebar">
-		
-	<div class="content">		
+
+	<div class="content">
+
+		{{#if patientHasHighRisk}}
 		<div class="alert-chip">
-			<span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
-			<span class="alert-text">This patient has a <b>HIGH</b> risk of sepsis</span>
+			<span class="alert-icon">
+				<i class="fa fa-exclamation-triangle"></i>
+			</span>
+			<span class="alert-text">This patient has a
+				<b>HIGH</b> risk of sepsis</span>
 		</div>
-		
+		{{/if}}
+
+
 		<div class="section-header">
 			Relative Risk
 		</div>
 
-			<div class="update">
-				Last Updated: {{patientrisk.LastCalculatedDTS.value}}
-				<i class="fa fa-refresh fa-spin"></i> Updating…
-			</div>
-		
-			<div id="gauge" class="gauge-container"></div>
-		
-			<div class="summary">
-				<span class="highlight">{{patientrisk.RelativeRiskValueDSC.value}}</span> Department Average
-			</div>
-		
+		<div class="update">
+			Last Updated: {{patientrisk.LastCalculatedDTS.value}}
+			<i class="fa fa-refresh fa-spin"></i> Updating…
+		</div>
+
+		<div id="gauge" class="gauge-container"></div>
+
+		<div class="summary">
+			<span class="highlight">{{patientrisk.RelativeRiskValueDSC.value}}</span> Department Average
+		</div>
+
 		<div class="section-header">
 			Ranked Risk Factors
 		</div>
-		
-			<div class="risk-block first">
-				<div class="risk-number red">1</div>
-				{{patientrisk.RankedRiskFactor1DSC.value}}<span class="up-arrow"><i class="fa fa-caret-up"></i></span>
-			</div>
 
-			<div class="risk-block">
-				<div class="risk-number red">2</div>
-				{{patientrisk.RankedRiskFactor2DSC.value}}
-			</div>
+		<div class="risk-block first">
+			<div class="risk-number red">1</div>
+			{{patientrisk.RankedRiskFactor1DSC.value}}
+			<span class="up-arrow">
+				<i class="fa fa-caret-up"></i>
+			</span>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number orange">3</div>
-				{{patientrisk.RankedRiskFactor3DSC.value}}<span class="down-arrow"><i class="fa fa-caret-down"></i></span>
-			</div>
+		<div class="risk-block">
+			<div class="risk-number red">2</div>
+			{{patientrisk.RankedRiskFactor2DSC.value}}
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number gray">4</div>
-				{{patientrisk.RankedRiskFactor4DSC.value}}<span class="down-arrow"><i class="fa fa-caret-down"></i></span>
-			</div>
+		<div class="risk-block">
+			<div class="risk-number orange">3</div>
+			{{patientrisk.RankedRiskFactor3DSC.value}}
+			<span class="down-arrow">
+				<i class="fa fa-caret-down"></i>
+			</span>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number gray">5</div>
-				{{patientrisk.RankedRiskFactor5DSC.value}}
-			</div>
-		
-			<div class="risk-block">
-				<div class="risk-number gray">6</div>
-				{{patientrisk.RankedRiskFactor6DSC.value}}
-			</div>
+		<div class="risk-block">
+			<div class="risk-number gray">4</div>
+			{{patientrisk.RankedRiskFactor4DSC.value}}
+			<span class="down-arrow">
+				<i class="fa fa-caret-down"></i>
+			</span>
+		</div>
 
-			<div class="risk-block">
-				<div class="risk-number gray">7</div>
-				{{patientrisk.RankedRiskFactor7DSC.value}}
-			</div>
+		<div class="risk-block">
+			<div class="risk-number gray">5</div>
+			{{patientrisk.RankedRiskFactor5DSC.value}}
+		</div>
+
+		<div class="risk-block">
+			<div class="risk-number gray">6</div>
+			{{patientrisk.RankedRiskFactor6DSC.value}}
+		</div>
+
+		<div class="risk-block">
+			<div class="risk-number gray">7</div>
+			{{patientrisk.RankedRiskFactor7DSC.value}}
+		</div>
 
 	</div>
-	
+
 </div>
 
 <script>
@@ -86,18 +102,18 @@
 	addEvent(document, "DOMContentLoaded", function (event) {
 		var gauge = new JustGage({
 			id: "gauge",
-			value: 0.80,
-			min: 0,
-			max: 1.0,
-			label: "Risk Score",
-			showInnerShadow: true,
-			formatNumber: true,
-			valueFontFamily: "Open Sans",
-			levelColors: [
-				"#00A859",
-				"#F8961D",
-				"#EF3F46"
-			]
+			value: {{ patientrisk.PredictedProbNBR.value }},
+		min: 0,
+		max: 1.0,
+		label: "Risk Score",
+		showInnerShadow: true,
+		formatNumber: true,
+		valueFontFamily: "Open Sans",
+		levelColors: [
+			"#00A859",
+			"#F8961D",
+			"#EF3F46"
+		]
 		});
 	});
 </script>

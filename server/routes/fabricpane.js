@@ -29,11 +29,20 @@ router.get('/:patientId', function(req, res, next) {
             patientrisk = rows[0];
             console.info(patientrisk);
         }
+
+        var patientRiskLevel = "Low";
+        var patientHasHighRisk = false;
+        if (patientrisk.PredictedProbNBR.value > 0.30) {
+            patientRiskLevel = "High";
+            patientHasHighRisk = true;
+        }
+
         res.render('sepsis', {
             title: 'Optimizing Choices',
             patientId: patientId, // 'Jim Jones',
             patientrisk: patientrisk,
-            patientname: "Jim Jones"
+            patientname: "Jim Jones",
+            patientHasHighRisk: patientHasHighRisk
         });
     });
 });
