@@ -43,7 +43,13 @@ module.exports = {
         this.executeQuery(host, 'SELECT * FROM Registries WHERE PatientID=' + patientId, callback);
     },
     loadRisk: function(host, patientId, callback) {
-        this.executeQuery(host, 'SELECT TOP 1 FacilityAccountID, PredictedProbNBR, Factor1TXT,Factor2TXT,Factor3TXT,LastCalculatedDTS FROM Sepsis.EWSPredictionsBASE where FacilityAccountID = ' + patientId + ' ORDER BY LastCalculatedDTS DESC', callback);
+        this.executeQuery(host,
+            `SELECT [FacilityAccountID],[PredictedProbNBR],[Factor1TXT],[Factor2TXT],[Factor3TXT],[Factor4TXT],[Factor5TXT],[Factor6TXT],[Factor7TXT]
+        ,[AdmitAgeNBR],[TemperatureMaxNBR],[PulseMaxNBR],[O2SatMinNBR],[SBPMinNBR],[EDVisitsPrior90DaysNBR],[AntibioticPrior7DaysFLG],[SepsisFLG]
+        ,[RankedRiskFactor1DSC],[RankedRiskFactor2DSC],[RankedRiskFactor3DSC],[RankedRiskFactor4DSC],[RankedRiskFactor5DSC],[RankedRiskFactor6DSC],[RankedRiskFactor7DSC]
+        ,[RelativeRiskValueDSC],[RelativeRiskHigherLowerDSC],[AlertPopUpFLG],[RiskLastUpdatedDSC],[LastCalculatedDTS]
+    FROM [Sepsis].[EWSPredictionsBASE]
+   where FacilityAccountID = ` + patientId + ' ORDER BY LastCalculatedDTS DESC', callback);
     }
 };
 
