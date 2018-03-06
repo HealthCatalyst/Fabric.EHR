@@ -18,8 +18,11 @@
 		</div>
 
 		<div class="update">
-			Last Updated: {{patientrisk.LastCalculatedDTS.value}}
-			<i class="fa fa-refresh fa-spin"></i> Updating…
+		{{#if isCalculatingRisk}}
+			<i class="fa fa-refresh fa-spin"></i> Calculating…
+		{{else}}
+			Last Calculated: {{patientrisk.LastCalculatedDTS.value}}
+		{{/if}}
 		</div>
 
 		<div id="gauge" class="gauge-container"></div>

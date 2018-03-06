@@ -5,8 +5,10 @@ var sqlclient = require('../sqlclient');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/:patientId', function(req, res, next) {
+router.get('/:patientId/:action', function(req, res, next) {
     var patientId = req.params.patientId;
+    var action = req.params.action;
+
     var insightRows = [];
     var patient = {};
     var patientrisk = {};
@@ -37,12 +39,16 @@ router.get('/:patientId', function(req, res, next) {
             patientHasHighRisk = true;
         }
 
+        var isCalculatingRisk = false;
+        if (action === "calculating") { isCalculatingRisk = true; }
+
         res.render('sepsis', {
             title: 'Optimizing Choices',
             patientId: patientId, // 'Jim Jones',
             patientrisk: patientrisk,
             patientname: "Jim Jones",
-            patientHasHighRisk: patientHasHighRisk
+            patientHasHighRisk: patientHasHighRisk,
+            isCalculatingRisk: isCalculatingRisk
         });
     });
 });
