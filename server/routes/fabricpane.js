@@ -30,26 +30,29 @@ router.get('/:patientId/:action', function(req, res, next) {
         if (typeof rows !== 'undefined' && rows.length > 0) {
             patientrisk = rows[0];
             console.info(patientrisk);
+            var patientRiskLevel = "Low";
+            var patientHasHighRisk = false;
+            if (patientrisk.PredictedProbNBR.value > 0.30) {
+                patientRiskLevel = "High";
+                patientHasHighRisk = true;
+            }
+
+            var isCalculatingRisk = false;
+            if (action === "calculating") { isCalculatingRisk = true; }
+
+            res.render('sepsis', {
+                title: 'Optimizing Choices',
+                patientId: patientId, // 'Jim Jones',
+                patientrisk: patientrisk,
+                patientname: "Jim Jones",
+                patientHasHighRisk: patientHasHighRisk,
+                isCalculatingRisk: isCalculatingRisk
+            });
+        } else {
+            res.render('sepsiserror', {
+                patientId: patientId
+            });
         }
-
-        var patientRiskLevel = "Low";
-        var patientHasHighRisk = false;
-        if (patientrisk.PredictedProbNBR.value > 0.30) {
-            patientRiskLevel = "High";
-            patientHasHighRisk = true;
-        }
-
-        var isCalculatingRisk = false;
-        if (action === "calculating") { isCalculatingRisk = true; }
-
-        res.render('sepsis', {
-            title: 'Optimizing Choices',
-            patientId: patientId, // 'Jim Jones',
-            patientrisk: patientrisk,
-            patientname: "Jim Jones",
-            patientHasHighRisk: patientHasHighRisk,
-            isCalculatingRisk: isCalculatingRisk
-        });
     });
 });
 
