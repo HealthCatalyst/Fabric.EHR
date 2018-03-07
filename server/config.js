@@ -4,7 +4,7 @@
 var databaseconfig = {
     userName: 'nodeuser', // update me
     password: 'ILoveNode2017', // update me
-    server: process.env.SQLServer || 'host.docker.internal',
+    server: process.env.SQLServer || 'docker.for.win.localhost',
     port: 1433,
     options: {
         database: 'SAM',
