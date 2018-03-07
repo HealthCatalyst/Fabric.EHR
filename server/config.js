@@ -31,10 +31,11 @@ module.exports = {
         console.log("Hello");
     },
     getconfig: function(host) {
-        if (host.startsWith("localhost")) {
-            return databaseconfig;
-        } else {
-            return azuredatabaseconfig;
-        }
+        return databaseconfig;
+        // if (host.startsWith("localhost")) {
+        //     return databaseconfig;
+        // } else {
+        //     return azuredatabaseconfig;
+        // }
     }
 };
