@@ -9,6 +9,7 @@ require('setimmediate');
 
 var insightspane = require('./routes/insightspane');
 var fabricpane = require('./routes/fabricpane');
+var worklist = require('./routes/worklist');
 var controlledsubstancepane = require('./routes/controlledsubstancepane');
 var ehrframe = require('./routes/ehrframe');
 
@@ -47,6 +48,7 @@ app.get('/', function(req, res) {
 });
 app.use('/insightspane', insightspane);
 app.use('/fabricpane', fabricpane);
+app.use('/worklist', worklist);
 app.use('/controlledsubstancepane', controlledsubstancepane);
 app.use('/ehrframe', ehrframe);
 
