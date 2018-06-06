@@ -2,8 +2,8 @@
 // ========
 
 var databaseconfig = {
-    userName: 'nodeuser', // update me
-    password: 'ILoveNode2017', // update me
+    userName: process.env.SQLUser, //'nodeuser', 
+    password: process.env.SQLPassword, //'ILoveNode2017', // update me
     server: process.env.SQLServer || 'docker.for.win.localhost',
     port: 1433,
     options: {

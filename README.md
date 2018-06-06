@@ -14,4 +14,4 @@ Run the web service:
 
 The webservice runs on http://localhost:3000
 
-To test it, open the following in a web browser: http://localhost:3000/fabricpane/1
+To test it, open the following in a web browser: http://localhost:3000/fabricpane/500041410/update
