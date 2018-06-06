@@ -62,6 +62,7 @@
 </div>
 
 <div class="content">
+
 	<table width="1000" border="0" cellspacing="0" cellpadding="0">
 		<tbody>
 			<tr>
@@ -75,27 +76,36 @@
 				<th scope="col">Other Risks</th>
 				<th scope="col">Reviewed?</th>
 			</tr>
+			{{#each patients}}
 			<tr class="row">
 				<td>
-					<div class="patient-name">BENNET, JACOB</div>
-					<div class="patient-info">Visit #: 43566456123
-						<br>Room: 302-2</div>
+					<div class="patient-name">
+						<a href="#" title="Open in Epic">{{FacilityAccountID.value}}</a>
+					</div>
+					<div class="patient-info">MRN: {{FacilityAccountID.value}}
+						<br>Age: {{AdmitAgeNBR.value}}</div>
 				</td>
 				<td>
 					<b>Critical</b>
 				</td>
 				<td>
-					<span class="risk">4.82 &nbsp;
-						<i class="fa fa-sort-asc red"></i>
+					<span class="risk">{{PredictedProbNBR.value}} &nbsp;
+						<!--<i class="fa fa-sort-asc red"></i>-->
 					</span>
 				</td>
 				<td>
 					<div class="risk-factor">
-						<b>CHG Bath Compliance:</b> 48%</div>
+						<a href="#" title="Open Flowsheet">
+							{{RankedRiskFactor1DSC.value}}</a>
+					</div>
 					<div class="risk-factor">
-						<b>Total Line Days:</b> 28</div>
+						<a href="#" title="Open Flowsheet">
+							{{RankedRiskFactor2DSC.value}}</a>
+					</div>
 					<div class="risk-factor">
-						<b>Line Count:</b> 6</div>
+						<a href="#" title="Open Flowsheet">
+							{{RankedRiskFactor3DSC.value}}</a>
+					</div>
 				</td>
 				<td>
 					<div class="risk-factor">
@@ -105,42 +115,13 @@
 					<div class="risk-factor">
 						<b>6%</b> risk reduction</div>
 				</td>
-				<td>3</td>
+				<td>
+					<a href="#" title="Open Risk Summary">3</a>
+				</td>
 				<td>No</td>
 			</tr>
-			<tr class="row">
-				<td>
-					<div class="patient-name">BENNET, JACOB</div>
-					<div class="patient-info">Visit #: 43566456123
-						<br>Room: 302-2</div>
-				</td>
-				<td>
-					<b>Critical</b>
-				</td>
-				<td>
-					<span class="risk">4.82 &nbsp;
-						<i class="fa fa-sort-asc red"></i>
-					</span>
-				</td>
-				<td>
-					<div class="risk-factor">
-						<b>CHG Bath Compliance:</b> 48%</div>
-					<div class="risk-factor">
-						<b>Total Line Days:</b> 28</div>
-					<div class="risk-factor">
-						<b>Line Count:</b> 6</div>
-				</td>
-				<td>
-					<div class="risk-factor">
-						<b>33%</b> risk reduction</div>
-					<div class="risk-factor">
-						<b>17%</b> risk reduction</div>
-					<div class="risk-factor">
-						<b>6%</b> risk reduction</div>
-				</td>
-				<td>3</td>
-				<td>No</td>
-			</tr>
+			{{/each}}
+
 		</tbody>
 	</table>
 </div>

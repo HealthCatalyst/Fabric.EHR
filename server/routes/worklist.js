@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
     //    console.log(req.headers);
 
 
-    sqlclient.loadRisk(host, 1, function(err, rows) {
+    sqlclient.loadRiskForAllPatients(host, function(err, rows) {
 
         if (err) {
             console.log(err);
@@ -24,10 +24,11 @@ router.get('/', function(req, res, next) {
         }
 
 
-            res.render('worklist', {
-                title: 'Optimizing Choices',
-                layout: 'worklist'
-            });
+        res.render('worklist', {
+            title: 'Fabric Mosaic',
+            layout: 'worklist',
+            patients: rows
+        });
     });
 });
 
