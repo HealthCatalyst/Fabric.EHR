@@ -5,6 +5,7 @@ var databaseconfig = {
     userName: process.env.SQLUser, //'nodeuser', 
     password: process.env.SQLPassword, //'ILoveNode2017', // update me
     server: process.env.SQLServer || 'docker.for.win.localhost',
+    // domain: process.env.ADDomain.toUpperCase().substring(0, process.env.ADDomain.indexOf('.') != -1 ? process.env.ADDomain.indexOf('.')-1 : process.env.ADDomain.length), // "DOMAIN_NAME_CAPITALIZED_AND_NOT_FQDM",
     port: 1433,
     options: {
         database: 'SAM',

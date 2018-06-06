@@ -19,6 +19,7 @@ router.get('/:patientId/:action', function(req, res, next) {
     console.log("SQLUser: " + process.env.SQLUser);
     console.log("SQLPassword: " + process.env.SQLPassword);
     console.log("SQLServer: " + process.env.SQLServer);
+    console.log("AD Domain: " + process.env.ADDomain)
     console.log("patientId:", patientId);
 
     sqlclient.loadRisk(host, patientId, function(err, rows) {
