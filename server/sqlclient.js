@@ -52,9 +52,9 @@ module.exports = {
    where FacilityAccountID = ` + patientId + ' ORDER BY LastCalculatedDTS DESC', callback);
     },
     loadRiskForAllPatients: function(host, callback) {
-        this.executeQuery(host, `SELECT TOP 10 eb.[FacilityAccountID],[PredictedProbNBR],[Factor1TXT],[Factor2TXT],[Factor3TXT],[Factor4TXT],[Factor5TXT],[Factor6TXT],[Factor7TXT]
-            ,[AdmitAgeNBR],[TemperatureMaxNBR],[PulseMaxNBR],[O2SatMinNBR],[SBPMinNBR],[EDVisitsPrior90DaysNBR],[AntibioticPrior7DaysFLG],[SepsisFLG]
-            ,[RankedRiskFactor1DSC],[RankedRiskFactor2DSC],[RankedRiskFactor3DSC],[RankedRiskFactor4DSC],[RankedRiskFactor5DSC],[RankedRiskFactor6DSC],[RankedRiskFactor7DSC]
+        this.executeQuery(host, `SELECT TOP 10 eb.[FacilityAccountID],[predicted_SepsisFLG],[Factor1TXT],[Factor2TXT],[Factor3TXT],[Factor4TXT],[Factor5TXT]
+            ,[AdmitAgeNBR],[TemperatureMaxNBR],[PulseMaxNBR],[O2SatMinNBR],[SBPMinNBR],[EDVisitsPrior90DaysNBR],[AntibioticPrior7DaysFLG_Y],[SepsisFLG]
+            ,[RankedRiskFactor1DSC],[RankedRiskFactor2DSC],[RankedRiskFactor3DSC],[RankedRiskFactor4DSC],[RankedRiskFactor5DSC]
             ,[RelativeRiskValueDSC],[RelativeRiskHigherLowerDSC],[AlertPopUpFLG],[RiskLastUpdatedDSC],eb.[LastCalculatedDTS]
         FROM [Sepsis].[EWSPredictionsBASE] eb
         INNER JOIN (
@@ -63,7 +63,7 @@ module.exports = {
         group by FacilityAccountID) f
         ON f.FacilityAccountID = eb.FacilityAccountID
         AND f.LastCalculatedDTS = eb.LastCalculatedDTS
-        ORDER BY [PredictedProbNBR] desc`, callback);
+        ORDER BY [predicted_SepsisFLG] desc`, callback);
     },
 
 };
