@@ -45,7 +45,7 @@ module.exports = {
     loadRisk: function(host, patientId, callback) {
         this.executeQuery(host,
             `SELECT [FacilityAccountID],[predicted_SepsisFLG],[Factor1TXT],[Factor2TXT],[Factor3TXT],[Factor4TXT],[Factor5TXT]
-            ,[AdmitAgeNBR],[TemperatureMaxNBR],[PulseMaxNBR],[O2SatMinNBR],[SBPMinNBR],[EDVisitsPrior90DaysNBR],[AntibioticPrior7DaysFLG_Y],[SepsisFLG]
+            ,[AdmitAgeNBR],[TemperatureMaxNBR],[PulseMaxNBR],[O2SatMinNBR],[SBPMinNBR],[EDVisitsPrior90DaysNBR],[AntibioticPrior7DaysFLG],[SepsisFLG]
             ,[RankedRiskFactor1DSC],[RankedRiskFactor2DSC],[RankedRiskFactor3DSC],[RankedRiskFactor4DSC],[RankedRiskFactor5DSC]
             ,[RelativeRiskValueDSC],[RelativeRiskHigherLowerDSC],[AlertPopUpFLG],[RiskLastUpdatedDSC],[LastCalculatedDTS]
         FROM [Sepsis].[EWSPredictionsBASE]
@@ -53,7 +53,7 @@ module.exports = {
     },
     loadRiskForAllPatients: function(host, callback) {
         this.executeQuery(host, `SELECT TOP 10 eb.[FacilityAccountID],[predicted_SepsisFLG],[Factor1TXT],[Factor2TXT],[Factor3TXT],[Factor4TXT],[Factor5TXT]
-            ,[AdmitAgeNBR],[TemperatureMaxNBR],[PulseMaxNBR],[O2SatMinNBR],[SBPMinNBR],[EDVisitsPrior90DaysNBR],[AntibioticPrior7DaysFLG_Y],[SepsisFLG]
+            ,[AdmitAgeNBR],[TemperatureMaxNBR],[PulseMaxNBR],[O2SatMinNBR],[SBPMinNBR],[EDVisitsPrior90DaysNBR],[AntibioticPrior7DaysFLG],[SepsisFLG]
             ,[RankedRiskFactor1DSC],[RankedRiskFactor2DSC],[RankedRiskFactor3DSC],[RankedRiskFactor4DSC],[RankedRiskFactor5DSC]
             ,[RelativeRiskValueDSC],[RelativeRiskHigherLowerDSC],[AlertPopUpFLG],[RiskLastUpdatedDSC],eb.[LastCalculatedDTS]
         FROM [Sepsis].[EWSPredictionsBASE] eb
@@ -65,7 +65,6 @@ module.exports = {
         AND f.LastCalculatedDTS = eb.LastCalculatedDTS
         ORDER BY [predicted_SepsisFLG] desc`, callback);
     },
-
 };
 
 // "select 123, 'hello world'"
