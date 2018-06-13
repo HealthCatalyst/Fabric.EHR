@@ -35,7 +35,7 @@ router.get('/:patientId/:action', function(req, res, next) {
             console.info(patientrisk);
             var patientRiskLevel = "Low";
             var patientHasHighRisk = false;
-            if (patientrisk.predicted_SepsisFLG.value > 0.30) {
+            if (patientrisk.predicted_SepsisFLG.value > 0.20) {
                 patientRiskLevel = "High";
                 patientHasHighRisk = true;
             }
